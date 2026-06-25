@@ -1,0 +1,38 @@
+name: CI
+
+# Build/compile check for pull requests; also runnable manually.
+"on":
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Compile mod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Cache 7DTD server payload
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.7dtd-server
+          key: ${{ runner.os }}-steamcmd-7dtd-v1
+          restore-keys: |
+            ${{ runner.os }}-steamcmd-7dtd-
+
+      - name: Install 7DTD Dedicated Server (for build DLLs)
+        run: bash scripts/install-7dtd-server.sh "${{ github.workspace }}/.7dtd-server"
+
+      - name: Compile mod
+        run: dotnet build src/SnapBounty.csproj -c Release -p:GameRoot="${{ github.workspace }}/.7dtd-server"

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configs>
+
+	<!-- Loot-Bag-Entities pro Tier. Erben von vanilla "twitch_crate_template"
+	     (Prefab="Backpack" -> sieht aus wie eine Loot-Bag, bleibt 2400s liegen).
+	     LootListOnDeath zeigt jeweils auf den passenden Loot-Container aus loot.xml. -->
+	<append xpath="/entity_classes">
+
+		<entity_class name="SnapBountyLootBagT1" extends="twitch_crate_template">
+			<property name="UserSpawnType" value="Console"/>
+			<property name="LootListOnDeath" value="snapBountyCrateT1"/>
+		</entity_class>
+
+		<entity_class name="SnapBountyLootBagT2" extends="twitch_crate_template">
+			<property name="UserSpawnType" value="Console"/>
+			<property name="LootListOnDeath" value="snapBountyCrateT2"/>
+		</entity_class>
+
+		<entity_class name="SnapBountyLootBagT3" extends="twitch_crate_template">
+			<property name="UserSpawnType" value="Console"/>
+			<property name="LootListOnDeath" value="snapBountyCrateT3"/>
+		</entity_class>
+
+	</append>
+
+</configs>

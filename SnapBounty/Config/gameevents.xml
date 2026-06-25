@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configs>
+
+	<!-- Reward-Trigger pro Tier: werden vom Challenge-Abschluss via reward_event aufgerufen.
+	     SpawnContainer droppt die passende Loot-Bag 3-6m beim abschliessenden Spieler + Sound,
+	     AddXP gibt skalierte Erfahrung. Aufbau analog zu vanilla "spawn_crate_template". -->
+	<append xpath="/gameevents">
+
+		<action_sequence name="snapBountyReward_t1">
+			<property name="allow_user_trigger" value="false"/>
+			<property name="action_type" value="Game"/>
+			<action class="SpawnContainer">
+				<property name="entity_names" value="SnapBountyLootBagT1"/>
+				<property name="spawn_count" value="1"/>
+				<property name="min_distance" value="3"/>
+				<property name="max_distance" value="6"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="spawn_sound" value="open_supply_crate"/>
+			</action>
+			<action class="AddXP">
+				<property name="xp_amount" value="1500"/>
+			</action>
+		</action_sequence>
+
+		<action_sequence name="snapBountyReward_t2">
+			<property name="allow_user_trigger" value="false"/>
+			<property name="action_type" value="Game"/>
+			<action class="SpawnContainer">
+				<property name="entity_names" value="SnapBountyLootBagT2"/>
+				<property name="spawn_count" value="1"/>
+				<property name="min_distance" value="3"/>
+				<property name="max_distance" value="6"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="spawn_sound" value="open_supply_crate"/>
+			</action>
+			<action class="AddXP">
+				<property name="xp_amount" value="3500"/>
+			</action>
+		</action_sequence>
+
+		<action_sequence name="snapBountyReward_t3">
+			<property name="allow_user_trigger" value="false"/>
+			<property name="action_type" value="Game"/>
+			<action class="SpawnContainer">
+				<property name="entity_names" value="SnapBountyLootBagT3"/>
+				<property name="spawn_count" value="1"/>
+				<property name="min_distance" value="3"/>
+				<property name="max_distance" value="6"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="spawn_sound" value="open_supply_crate"/>
+			</action>
+			<action class="AddXP">
+				<property name="xp_amount" value="7500"/>
+			</action>
+		</action_sequence>
+
+	</append>
+
+</configs>

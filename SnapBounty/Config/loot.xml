@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configs>
+
+	<!-- Inhalt der Snap-Bounty-Loot-Bags, gestaffelt nach Tier (T1=leicht ... T3=schwer).
+	     Pro Drop werden count="2,5" zufaellige Eintraege gezogen; viel Pool-Vielfalt = abwechslungsreiche Bags.
+	     Alle Gruppen-/Item-Namen sind gegen die echte vanilla loot.xml/items.xml verifiziert. -->
+	<append xpath="/lootcontainers">
+
+		<!-- ================= TIER 1 (leichte Bounties) ================= -->
+		<lootgroup name="groupSnapBountyRewardT1" count="2,5">
+			<item group="groupChallengeRewardSkillMagazinesAll"/> <!-- Zeitschriften/Magazine -->
+			<item group="schematicsModsAndGeneralCommon"/>        <!-- Mods/Schematics -->
+			<item group="twitch_tier1weapon"/>                    <!-- Waffe -->
+			<item group="twitch_tier1ammo"/>                      <!-- Munition -->
+			<item group="twitch_tier1tool"/>                      <!-- Werkzeug -->
+			<item group="twitch_tier1armor"/>                     <!-- Ruestung -->
+			<item group="twitch_tier1mods"/>                      <!-- Mods -->
+			<item group="airdropfood"/>                           <!-- Essen -->
+			<item group="airdropdrink"/>                          <!-- Trinken -->
+			<item group="airdropMedicine"/>                       <!-- Medizin -->
+			<item name="medicalFirstAidBandage" count="2,4"/>     <!-- Verband -->
+		</lootgroup>
+
+		<lootcontainer name="snapBountyCrateT1" count="1" size="6,2" destroy_on_close="true"
+			sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate"
+			open_time="0.25" loot_quality_template="qualBaseTemplate"
+			ignore_loot_abundance="true" unmodified_lootstage="false">
+			<item group="groupSnapBountyRewardT1"/>
+		</lootcontainer>
+
+		<!-- ================= TIER 2 (mittlere Bounties) ================= -->
+		<lootgroup name="groupSnapBountyRewardT2" count="2,5">
+			<item group="groupChallengeRewardSkillMagazinesAll"/>
+			<item group="schematicsModsAndGeneralT2"/>            <!-- bessere Schematics/Mods -->
+			<item group="perkBooks"/>                             <!-- Perk-Buecher -->
+			<item group="twitch_tier2weapon"/>
+			<item group="twitch_tier2ammo"/>
+			<item group="twitch_tier2tool"/>
+			<item group="twitch_tier2armor"/>
+			<item group="twitch_tier2mods"/>
+			<item group="twitch_tier2weaponmods"/>               <!-- Waffen-Mods -->
+			<item group="groupCoolerMedical"/>                    <!-- Medizin-Set -->
+			<item group="groupChem01"/>                           <!-- Chemie -->
+			<item name="medicalFirstAidKit" count="1,2"/>         <!-- Medkit -->
+		</lootgroup>
+
+		<lootcontainer name="snapBountyCrateT2" count="1" size="6,2" destroy_on_close="true"
+			sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate"
+			open_time="0.25" loot_quality_template="qualBaseTemplate"
+			ignore_loot_abundance="true" unmodified_lootstage="false">
+			<item group="groupSnapBountyRewardT2"/>
+		</lootcontainer>
+
+		<!-- ================= TIER 3 (schwere Bounties) ================= -->
+		<lootgroup name="groupSnapBountyRewardT3" count="2,5">
+			<item group="groupChallengeRewardSkillMagazinesAll"/>
+			<item group="schematicsModsAndGeneralRare"/>          <!-- seltene Schematics/Mods -->
+			<item group="perkBooks"/>                             <!-- Perk-Buecher -->
+			<item group="groupArmorScaled"/>                      <!-- skalierte Ruestung -->
+			<item group="twitch_tier3weapon"/>
+			<item group="twitch_tier3ammo"/>
+			<item group="twitch_tier3tool"/>
+			<item group="twitch_tier3mods"/>
+			<item group="twitch_tier3weaponmods"/>
+			<item group="groupCoolerMedical"/>
+			<item name="ammo762mmBulletBall" count="80,160"/>
+			<item name="drugPainkillers" count="2,3"/>
+		</lootgroup>
+
+		<lootcontainer name="snapBountyCrateT3" count="1" size="6,2" destroy_on_close="true"
+			sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate"
+			open_time="0.25" loot_quality_template="qualBaseTemplate"
+			ignore_loot_abundance="true" unmodified_lootstage="false">
+			<item group="groupSnapBountyRewardT3"/>
+		</lootcontainer>
+
+	</append>
+
+</configs>

@@ -1,0 +1,14 @@
+# Build artifacts
+bin/
+obj/
+dist/
+staging/
+*.user
+
+# CI / tooling
+node_modules/
+.7dtd-server/
+game-dlls*
+
+# OS / editor
+.DS_Store
