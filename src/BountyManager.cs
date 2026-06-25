@@ -19,11 +19,10 @@ namespace SnapBounty
 
     public static class BountyManager
     {
-        public const int MaxActive = 3;
-
         internal static readonly Dictionary<string, PlayerState> States = new Dictionary<string, PlayerState>();
         private static readonly Dictionary<int, ClientInfo> Online = new Dictionary<int, ClientInfo>();
         private static readonly Dictionary<int, string> LastBiome = new Dictionary<int, string>();
+        private static readonly Dictionary<string, DateTime> LastSkip = new Dictionary<string, DateTime>();
 
         private static readonly System.Random Rng = new System.Random();
         private static readonly object Lock = new object();
@@ -178,10 +177,11 @@ namespace SnapBounty
         public static void Skip(ClientInfo ci, int index1Based)
         {
             if (ci == null) return;
+            string key = Key(ci);
             BountyDef newDef = null;
             lock (Lock)
             {
-                if (!States.TryGetValue(Key(ci), out var st) || st.Active.Count == 0)
+                if (!States.TryGetValue(key, out var st) || st.Active.Count == 0)
                 {
                     ChatUtil.Send(ci, "Du hast keine Auftraege zum Skippen.");
                     return;
@@ -191,11 +191,23 @@ namespace SnapBounty
                     ChatUtil.Send(ci, "Ungueltige Nummer. Nutze /bounty (1-" + st.Active.Count + ").");
                     return;
                 }
+                // Cooldown pruefen (0 = deaktiviert)
+                int cd = Config.SkipCooldownSeconds;
+                if (cd > 0 && LastSkip.TryGetValue(key, out var last))
+                {
+                    double remaining = cd - (DateTime.UtcNow - last).TotalSeconds;
+                    if (remaining > 0)
+                    {
+                        ChatUtil.Send(ci, "Skip-Cooldown: noch " + (int)Math.Ceiling(remaining) + "s.");
+                        return;
+                    }
+                }
                 var current = new HashSet<string>(st.Active.Select(a => a.DefId));
                 var replacement = PickRandom(current);
                 if (replacement == null) { ChatUtil.Send(ci, "Kein anderer Auftrag verfuegbar."); return; }
                 st.Active[index1Based - 1] = new ActiveBounty { DefId = replacement.Id, Progress = 0 };
                 newDef = replacement;
+                LastSkip[key] = DateTime.UtcNow;
                 Persistence.Save();
             }
             ChatUtil.Send(ci, "Auftrag neu gewuerfelt: " + newDef.Title + " (Tier " + newDef.Tier + ")");
@@ -253,7 +265,7 @@ namespace SnapBounty
         private static void FillToMax(PlayerState st)
         {
             int guard = 0;
-            while (st.Active.Count < MaxActive && guard++ < 50)
+            while (st.Active.Count < Config.MaxActive && guard++ < 50)
             {
                 var current = new HashSet<string>(st.Active.Select(a => a.DefId));
                 var def = PickRandom(current);

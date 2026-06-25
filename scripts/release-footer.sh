@@ -22,6 +22,7 @@ cat <<EOF
 SnapBounty/
 ├── SnapBounty.dll
 ├── ModInfo.xml
+├── snapbounty.xml          # config: maxActive, skip cooldown, per-bounty count/tier
 └── Config/
     ├── loot.xml
     ├── entityclasses.xml

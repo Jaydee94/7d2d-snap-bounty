@@ -12,6 +12,8 @@ namespace SnapBounty
         {
             Log.Out("[SnapBounty] InitMod – registriere Handler & Harmony-Patches");
 
+            Config.Load(_modInstance != null ? _modInstance.Path : null);
+
             var harmony = new Harmony("com.jaydee.snapbounty");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 

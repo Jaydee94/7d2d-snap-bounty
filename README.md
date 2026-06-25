@@ -17,7 +17,7 @@ bounty's tier.
 |---|---|
 | `/bounty` | Show your active bounties and progress |
 | `/bounty help` | Short help |
-| `/skip <n>` | Reroll bounty number `n` |
+| `/skip <n>` | Reroll bounty number `n` (subject to a configurable cooldown) |
 
 ## Bounty types (all tracked server-side)
 
@@ -29,10 +29,33 @@ bounty's tier.
 | **Craft** | Harmony patch `TileEntityWorkstation.AddCraftComplete` | craft any 20/50; forge iron/steel; mix concrete |
 | **Explore** | Server polling of `EntityPlayer.biomeStandingOn` | enter desert / burnt forest / snow / wasteland |
 
+## Configuration
+
+`SnapBounty/snapbounty.xml` (next to the DLL) is read on mod load. Edit it and restart the server.
+If the file is missing or invalid, built-in defaults are used.
+
+```xml
+<snapbounty>
+  <maxActive>3</maxActive>              <!-- active bounties per player -->
+  <skipCooldownSeconds>300</skipCooldownSeconds>  <!-- /skip cooldown; 0 = off -->
+  <bounties>
+    <bounty id="z_any_50" count="50" tier="2" enabled="true" />
+    <!-- ... one line per bounty ... -->
+  </bounties>
+</snapbounty>
+```
+
+- **`maxActive`** — how many bounties each player holds at once.
+- **`skipCooldownSeconds`** — per-player cooldown between `/skip` uses (`0` disables it).
+- **`<bounties>`** — authoritative list: only the listed, `enabled="true"` bounties are used.
+  Tune **`count`** (goal) and **`tier`** (1–3 → loot-bag quality), or set `enabled="false"` to
+  disable one. The id, type, title and targets are defined in code ([`src/Bounties.cs`](src/Bounties.cs)) —
+  ids that aren't recognized are ignored with a warning. If no entry is enabled, defaults are kept.
+
 ## Bounty catalog
 
-33 bounties (defined in [`src/Bounties.cs`](src/Bounties.cs)). The **tier** decides the loot-bag
-quality (T1→T3); every bag yields a random **2–5** items.
+33 bounties (defaults in [`src/Bounties.cs`](src/Bounties.cs), tunable in `snapbounty.xml`). The
+**tier** decides the loot-bag quality (T1→T3); every bag yields a random **2–5** items.
 
 **Kill — any**
 
@@ -124,10 +147,12 @@ src/                 C# source (+ SnapBounty.csproj)
   Bounties.cs        bounty definitions + catalog
   BountyManager.cs   assignment, tracking, /skip, reward trigger, biome polling
   HarmonyPatches.cs  server hooks for block (SetBlocksRPC) and craft (AddCraftComplete) events
+  Config.cs          loads snapbounty.xml (settings + per-bounty overrides)
   Persistence.cs     save/load in the save folder
   ChatUtil.cs        chat message to a single player
 SnapBounty/          mod assets (committed; the .dll is built, not committed)
   ModInfo.xml
+  snapbounty.xml     server config (settings + per-bounty count/tier)
   Config/{loot,entityclasses,gameevents}.xml
 scripts/             CI helpers (server install, release staging, notes footer)
 .github/workflows/   CI (compile on PR) + Release (semantic-release)
@@ -185,4 +210,4 @@ Commit messages follow [Conventional Commits](https://www.conventionalcommits.or
 - Not yet verified in-game (no game launch during development): that the loot bag spawns at the
   player via `HandleAction`, and that `SetBlocksRPC`/`AddCraftComplete` fire as expected on a
   dedicated server — check these first on a real server.
-- Planned: skip cooldown, configurable counts/tiers, localized chat text.
+- Planned: localized chat text, more bounty types via additional server hooks.

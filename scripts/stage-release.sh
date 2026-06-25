@@ -27,6 +27,7 @@ mkdir -p "$STAGING/Config" dist
 cp "bin/Release/$ASM.dll" "$STAGING/"
 [ -f "bin/Release/$ASM.pdb" ] && cp "bin/Release/$ASM.pdb" "$STAGING/" || true
 cp "$ASM/ModInfo.xml" "$STAGING/"
+cp "$ASM/snapbounty.xml" "$STAGING/"
 cp "$ASM"/Config/*.xml "$STAGING/Config/"
 cp README.md "$STAGING/" 2>/dev/null || true
 

@@ -24,6 +24,7 @@ mkdir -p "$OUT/Config"
 cp "bin/Release/$ASM.dll" "$OUT/"
 [ -f "bin/Release/$ASM.pdb" ] && cp "bin/Release/$ASM.pdb" "$OUT/" || true
 cp "$ASM/ModInfo.xml" "$OUT/"
+cp "$ASM/snapbounty.xml" "$OUT/"
 cp "$ASM"/Config/*.xml "$OUT/Config/"
 
 echo ">> done: $OUT"

@@ -39,8 +39,12 @@ namespace SnapBounty
         // Helfer fuer kompakte Listen
         private static HashSet<string> N(params string[] v) => new HashSet<string>(v);
 
-        // Alle Entity-/Block-/Biom-/Recipe-Namen sind gegen die echten vanilla-XMLs (V2.6) verifiziert.
-        public static readonly List<BountyDef> All = new List<BountyDef>
+        // Effektiver Katalog (von Config.Load ggf. mit Counts/Tiers/enabled ueberschrieben).
+        public static List<BountyDef> All = BuildDefaults();
+
+        // Eingebaute Standard-Bounties. Alle Entity-/Block-/Biom-/Recipe-Namen sind gegen die
+        // echten vanilla-XMLs (V2.6) verifiziert.
+        public static List<BountyDef> BuildDefaults() => new List<BountyDef>
         {
             // ===================== Kills: beliebige Zombies/Tiere =====================
             new BountyDef("z_any_10", 1, 10, "Toete 10 Zombies", BountyKind.KillAnyZombie),

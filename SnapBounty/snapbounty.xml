@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Snap Bounty configuration. Edit and restart the server to apply.
+  - maxActive: how many bounties each player has active at once.
+  - skipCooldownSeconds: cooldown between /skip uses per player (0 = no cooldown).
+  - <bounties>: per-bounty count / tier (1-3, decides loot-bag quality) / enabled.
+    This list is authoritative: only the enabled entries below are used.
+    Set enabled="false" to disable a bounty; change count/tier to tune it.
+    (Type/title/targets are defined in code - see src/Bounties.cs.)
+-->
+<snapbounty>
+  <maxActive>3</maxActive>
+  <skipCooldownSeconds>300</skipCooldownSeconds>
+
+  <bounties>
+    <!-- Kills: any zombies / animals -->
+    <bounty id="z_any_10"   count="10"  tier="1" enabled="true" />
+    <bounty id="z_any_50"   count="50"  tier="2" enabled="true" />
+    <bounty id="z_any_100"  count="100" tier="3" enabled="true" />
+    <bounty id="a_any_5"    count="5"   tier="1" enabled="true" />
+    <bounty id="a_any_20"   count="20"  tier="2" enabled="true" />
+
+    <!-- Kills: specific zombies -->
+    <bounty id="z_vulture_20"    count="20" tier="1" enabled="true" />
+    <bounty id="z_cop_5"         count="5"  tier="2" enabled="true" />
+    <bounty id="z_spider_10"     count="10" tier="2" enabled="true" />
+    <bounty id="z_lumberjack_10" count="10" tier="2" enabled="true" />
+    <bounty id="z_screamer_5"    count="5"  tier="2" enabled="true" />
+    <bounty id="z_mutated_10"    count="10" tier="2" enabled="true" />
+    <bounty id="z_wight_5"       count="5"  tier="3" enabled="true" />
+    <bounty id="z_demo_3"        count="3"  tier="3" enabled="true" />
+
+    <!-- Kills: animals / hunting -->
+    <bounty id="a_snake_10" count="10" tier="1" enabled="true" />
+    <bounty id="a_boar_10"  count="10" tier="1" enabled="true" />
+    <bounty id="a_pred_10"  count="10" tier="2" enabled="true" />
+    <bounty id="a_bear_3"   count="3"  tier="2" enabled="true" />
+    <bounty id="a_dog_15"   count="15" tier="2" enabled="true" />
+
+    <!-- Mine blocks -->
+    <bounty id="mine_60"  count="60"  tier="1" enabled="true" />
+    <bounty id="mine_250" count="250" tier="2" enabled="true" />
+    <bounty id="mine_500" count="500" tier="3" enabled="true" />
+
+    <!-- Build (place blocks) -->
+    <bounty id="place_50"  count="50"  tier="1" enabled="true" />
+    <bounty id="place_150" count="150" tier="2" enabled="true" />
+    <bounty id="place_300" count="300" tier="3" enabled="true" />
+
+    <!-- Craft (at workstations) -->
+    <bounty id="craft_any_20"      count="20"  tier="2" enabled="true" />
+    <bounty id="craft_any_50"      count="50"  tier="3" enabled="true" />
+    <bounty id="craft_iron_50"     count="50"  tier="2" enabled="true" />
+    <bounty id="craft_concrete_100" count="100" tier="2" enabled="true" />
+    <bounty id="craft_steel_100"   count="100" tier="3" enabled="true" />
+
+    <!-- Explore (enter biome; count stays 1) -->
+    <bounty id="biome_desert"    count="1" tier="1" enabled="true" />
+    <bounty id="biome_burnt"     count="1" tier="2" enabled="true" />
+    <bounty id="biome_snow"      count="1" tier="2" enabled="true" />
+    <bounty id="biome_wasteland" count="1" tier="3" enabled="true" />
+  </bounties>
+</snapbounty>
