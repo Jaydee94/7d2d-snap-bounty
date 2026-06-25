@@ -23,11 +23,13 @@ bounty's tier.
 
 | Type | Server source | Examples |
 |---|---|---|
-| **Kill** | `ModEvents.EntityKilled` | 10/50/100 zombies, 5 cops, 3 demolishers, 5 animals |
-| **Mine** | Harmony patch `GameManager.SetBlocksRPC` (block → air) | mine 60 / 250 blocks |
-| **Build** | Harmony patch `GameManager.SetBlocksRPC` (block placed) | place 50 / 150 blocks |
-| **Craft** | Harmony patch `TileEntityWorkstation.AddCraftComplete` | craft 20 items, forge 50 iron |
-| **Explore** | Server polling of `EntityPlayer.biomeStandingOn` | enter desert / snow / wasteland |
+| **Kill** | `ModEvents.EntityKilled` | any zombies/animals; cops, demolishers, vultures, spiders, lumberjacks, screamers, mutated, wights; predators, bears, dogs, snakes, boars |
+| **Mine** | Harmony patch `GameManager.SetBlocksRPC` (block → air) | mine 60 / 250 / 500 blocks |
+| **Build** | Harmony patch `GameManager.SetBlocksRPC` (block placed) | place 50 / 150 / 300 blocks |
+| **Craft** | Harmony patch `TileEntityWorkstation.AddCraftComplete` | craft any 20/50; forge iron/steel; mix concrete |
+| **Explore** | Server polling of `EntityPlayer.biomeStandingOn` | enter desert / burnt forest / snow / wasteland |
+
+The catalog ships ~33 bounties across these types (see `src/Bounties.cs`).
 
 ## How it works
 
