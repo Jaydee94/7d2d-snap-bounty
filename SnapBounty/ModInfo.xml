@@ -4,7 +4,7 @@
 	<DisplayName value="Snap Bounty" />
 	<Description value="Server-side mod: each player gets 1-3 dynamic bounties (rerollable via /skip); completing one drops a physical loot bag nearby with good gear. Clients install nothing. Built for 7DTD V2.6." />
 	<Author value="jaydee" />
-	<Version value="0.2.0.0" />
+	<Version value="1.0.0.0" />
 	<Website value="" />
 	<!-- Server-side-only DLL mod. SkipWithAntiCheat=true makes EAC clients skip it; a dedicated
 	     server loads server-side mods even with EAC enabled, so EAC can stay on. -->
