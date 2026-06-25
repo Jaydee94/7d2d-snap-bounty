@@ -29,7 +29,78 @@ bounty's tier.
 | **Craft** | Harmony patch `TileEntityWorkstation.AddCraftComplete` | craft any 20/50; forge iron/steel; mix concrete |
 | **Explore** | Server polling of `EntityPlayer.biomeStandingOn` | enter desert / burnt forest / snow / wasteland |
 
-The catalog ships ~33 bounties across these types (see `src/Bounties.cs`).
+## Bounty catalog
+
+33 bounties (defined in [`src/Bounties.cs`](src/Bounties.cs)). The **tier** decides the loot-bag
+quality (T1→T3); every bag yields a random **2–5** items.
+
+**Kill — any**
+
+| Tier | Goal |
+|---|---|
+| 1 | Kill 10 zombies |
+| 2 | Kill 50 zombies |
+| 3 | Kill 100 zombies |
+| 1 | Kill 5 animals |
+| 2 | Kill 20 animals |
+
+**Kill — specific zombies**
+
+| Tier | Goal | Targets |
+|---|---|---|
+| 1 | Kill 20 vultures | zombie vultures (+ radiated) |
+| 2 | Kill 5 cops | fat cop (+ feral/radiated/infernal) |
+| 2 | Kill 10 spider zombies | spider (+ feral/radiated/charged/infernal) |
+| 2 | Kill 10 lumberjacks | lumberjack (+ feral/radiated/infernal) |
+| 2 | Kill 5 screamers | screamer (+ feral/radiated) |
+| 2 | Kill 10 mutated | mutated (+ feral/radiated/charged/infernal) |
+| 3 | Kill 5 wights | wight (feral/radiated/charged/infernal) |
+| 3 | Kill 3 demolishers | demolition |
+
+**Kill — animals / hunting**
+
+| Tier | Goal | Targets |
+|---|---|---|
+| 1 | Kill 10 snakes | snake |
+| 1 | Kill 10 boars | boar (+ zombie boar) |
+| 2 | Kill 10 predators | wolf, direwolf, bear, mountain lion |
+| 2 | Kill 3 bears | bear, small bear, zombie bear |
+| 2 | Kill 15 zombie dogs | zombie dog |
+
+**Mine blocks**
+
+| Tier | Goal |
+|---|---|
+| 1 | Mine 60 blocks |
+| 2 | Mine 250 blocks |
+| 3 | Mine 500 blocks |
+
+**Build (place blocks)**
+
+| Tier | Goal |
+|---|---|
+| 1 | Place 50 blocks |
+| 2 | Place 150 blocks |
+| 3 | Place 300 blocks |
+
+**Craft (at workstations)**
+
+| Tier | Goal |
+|---|---|
+| 2 | Craft any 20 items |
+| 3 | Craft any 50 items |
+| 2 | Forge 50 forged iron |
+| 2 | Mix 100 concrete mix |
+| 3 | Forge 100 forged steel |
+
+**Explore (enter biome)**
+
+| Tier | Goal |
+|---|---|
+| 1 | Enter the desert |
+| 2 | Enter the burnt forest |
+| 2 | Enter the snow |
+| 3 | Enter the wasteland |
 
 ## How it works
 
