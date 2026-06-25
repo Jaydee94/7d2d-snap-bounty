@@ -46,68 +46,68 @@ namespace SnapBounty
         // echten vanilla-XMLs (V2.6) verifiziert.
         public static List<BountyDef> BuildDefaults() => new List<BountyDef>
         {
-            // ===================== Kills: beliebige Zombies/Tiere =====================
-            new BountyDef("z_any_10", 1, 10, "Toete 10 Zombies", BountyKind.KillAnyZombie),
-            new BountyDef("z_any_50", 2, 50, "Toete 50 Zombies", BountyKind.KillAnyZombie),
-            new BountyDef("z_any_100", 3, 100, "Toete 100 Zombies", BountyKind.KillAnyZombie),
-            new BountyDef("a_any_5", 1, 5, "Toete 5 Tiere", BountyKind.KillAnyAnimal),
-            new BountyDef("a_any_20", 2, 20, "Toete 20 Tiere", BountyKind.KillAnyAnimal),
+            // ===================== Kills: any zombies/animals =====================
+            new BountyDef("z_any_10", 1, 10, "Kill 10 zombies", BountyKind.KillAnyZombie),
+            new BountyDef("z_any_50", 2, 50, "Kill 50 zombies", BountyKind.KillAnyZombie),
+            new BountyDef("z_any_100", 3, 100, "Kill 100 zombies", BountyKind.KillAnyZombie),
+            new BountyDef("a_any_5", 1, 5, "Kill 5 animals", BountyKind.KillAnyAnimal),
+            new BountyDef("a_any_20", 2, 20, "Kill 20 animals", BountyKind.KillAnyAnimal),
 
-            // ===================== Kills: spezielle Zombie-Typen =====================
-            new BountyDef("z_cop_5", 2, 5, "Toete 5 Cop-Zombies", BountyKind.KillNamed,
+            // ===================== Kills: specific zombie types =====================
+            new BountyDef("z_cop_5", 2, 5, "Kill 5 cop zombies", BountyKind.KillNamed,
                 N("zombieFatCop", "zombieFatCopFeral", "zombieFatCopRadiated", "zombieFatCopInfernal")),
-            new BountyDef("z_demo_3", 3, 3, "Toete 3 Demolisher", BountyKind.KillNamed,
+            new BountyDef("z_demo_3", 3, 3, "Kill 3 demolishers", BountyKind.KillNamed,
                 N("zombieDemolition")),
-            new BountyDef("z_vulture_20", 1, 20, "Toete 20 Geier", BountyKind.KillNamed,
+            new BountyDef("z_vulture_20", 1, 20, "Kill 20 vultures", BountyKind.KillNamed,
                 N("animalZombieVulture", "animalZombieVultureRadiated")),
-            new BountyDef("z_spider_10", 2, 10, "Toete 10 Spinnen-Zombies", BountyKind.KillNamed,
+            new BountyDef("z_spider_10", 2, 10, "Kill 10 spider zombies", BountyKind.KillNamed,
                 N("zombieSpider", "zombieSpiderFeral", "zombieSpiderRadiated", "zombieSpiderCharged", "zombieSpiderInfernal")),
-            new BountyDef("z_lumberjack_10", 2, 10, "Toete 10 Holzfaeller", BountyKind.KillNamed,
+            new BountyDef("z_lumberjack_10", 2, 10, "Kill 10 lumberjacks", BountyKind.KillNamed,
                 N("zombieLumberjack", "zombieLumberjackFeral", "zombieLumberjackRadiated", "zombieLumberjackInfernal")),
-            new BountyDef("z_screamer_5", 2, 5, "Toete 5 Screamer", BountyKind.KillNamed,
+            new BountyDef("z_screamer_5", 2, 5, "Kill 5 screamers", BountyKind.KillNamed,
                 N("zombieScreamer", "zombieScreamerFeral", "zombieScreamerRadiated")),
-            new BountyDef("z_mutated_10", 2, 10, "Toete 10 Mutierte", BountyKind.KillNamed,
+            new BountyDef("z_mutated_10", 2, 10, "Kill 10 mutated zombies", BountyKind.KillNamed,
                 N("zombieMutated", "zombieMutatedFeral", "zombieMutatedRadiated", "zombieMutatedCharged", "zombieMutatedInfernal")),
-            new BountyDef("z_wight_5", 3, 5, "Toete 5 Wights", BountyKind.KillNamed,
+            new BountyDef("z_wight_5", 3, 5, "Kill 5 wights", BountyKind.KillNamed,
                 N("zombieWightFeral", "zombieWightRadiated", "zombieWightCharged", "zombieWightInfernal")),
 
-            // ===================== Kills: Tiere / Jagd =====================
-            new BountyDef("a_pred_10", 2, 10, "Toete 10 Raubtiere", BountyKind.KillNamed,
+            // ===================== Kills: animals / hunting =====================
+            new BountyDef("a_pred_10", 2, 10, "Kill 10 predators", BountyKind.KillNamed,
                 N("animalWolf", "animalDireWolf", "animalBear", "animalMountainLion")),
-            new BountyDef("a_bear_3", 2, 3, "Toete 3 Baeren", BountyKind.KillNamed,
+            new BountyDef("a_bear_3", 2, 3, "Kill 3 bears", BountyKind.KillNamed,
                 N("animalBear", "animalBearSmall", "animalZombieBear")),
-            new BountyDef("a_dog_15", 2, 15, "Toete 15 Zombie-Hunde", BountyKind.KillNamed,
+            new BountyDef("a_dog_15", 2, 15, "Kill 15 zombie dogs", BountyKind.KillNamed,
                 N("animalZombieDog")),
-            new BountyDef("a_snake_10", 1, 10, "Toete 10 Schlangen", BountyKind.KillNamed,
+            new BountyDef("a_snake_10", 1, 10, "Kill 10 snakes", BountyKind.KillNamed,
                 N("animalSnake")),
-            new BountyDef("a_boar_10", 1, 10, "Toete 10 Wildschweine", BountyKind.KillNamed,
+            new BountyDef("a_boar_10", 1, 10, "Kill 10 boars", BountyKind.KillNamed,
                 N("animalBoar", "animalZombieBoar")),
 
-            // ===================== Sammeln / Abbauen (Bloecke abbauen) =====================
-            new BountyDef("mine_60", 1, 60, "Baue 60 Bloecke ab", BountyKind.MineBlock),
-            new BountyDef("mine_250", 2, 250, "Baue 250 Bloecke ab", BountyKind.MineBlock),
-            new BountyDef("mine_500", 3, 500, "Baue 500 Bloecke ab", BountyKind.MineBlock),
+            // ===================== Mine blocks =====================
+            new BountyDef("mine_60", 1, 60, "Mine 60 blocks", BountyKind.MineBlock),
+            new BountyDef("mine_250", 2, 250, "Mine 250 blocks", BountyKind.MineBlock),
+            new BountyDef("mine_500", 3, 500, "Mine 500 blocks", BountyKind.MineBlock),
 
-            // ===================== Bauen (Bloecke platzieren) =====================
-            new BountyDef("place_50", 1, 50, "Platziere 50 Bloecke", BountyKind.PlaceBlock),
-            new BountyDef("place_150", 2, 150, "Platziere 150 Bloecke", BountyKind.PlaceBlock),
-            new BountyDef("place_300", 3, 300, "Platziere 300 Bloecke", BountyKind.PlaceBlock),
+            // ===================== Build (place blocks) =====================
+            new BountyDef("place_50", 1, 50, "Place 50 blocks", BountyKind.PlaceBlock),
+            new BountyDef("place_150", 2, 150, "Place 150 blocks", BountyKind.PlaceBlock),
+            new BountyDef("place_300", 3, 300, "Place 300 blocks", BountyKind.PlaceBlock),
 
-            // ===================== Crafting (an Werkstationen) =====================
-            new BountyDef("craft_any_20", 2, 20, "Stelle 20 Dinge an Werkstationen her", BountyKind.Craft),
-            new BountyDef("craft_any_50", 3, 50, "Stelle 50 Dinge an Werkstationen her", BountyKind.Craft),
-            new BountyDef("craft_iron_50", 2, 50, "Schmiede 50 geschmiedetes Eisen", BountyKind.Craft,
+            // ===================== Craft (at workstations) =====================
+            new BountyDef("craft_any_20", 2, 20, "Craft 20 items at workstations", BountyKind.Craft),
+            new BountyDef("craft_any_50", 3, 50, "Craft 50 items at workstations", BountyKind.Craft),
+            new BountyDef("craft_iron_50", 2, 50, "Forge 50 forged iron", BountyKind.Craft,
                 N("resourceForgedIron")),
-            new BountyDef("craft_steel_100", 3, 100, "Schmiede 100 geschmiedeten Stahl", BountyKind.Craft,
+            new BountyDef("craft_steel_100", 3, 100, "Forge 100 forged steel", BountyKind.Craft,
                 N("resourceForgedSteel")),
-            new BountyDef("craft_concrete_100", 2, 100, "Mische 100 Betonmischung", BountyKind.Craft,
+            new BountyDef("craft_concrete_100", 2, 100, "Mix 100 concrete mix", BountyKind.Craft,
                 N("resourceConcreteMix")),
 
-            // ===================== Erkunden (Biome) =====================
-            new BountyDef("biome_desert", 1, 1, "Betritt die Wueste", BountyKind.EnterBiome, N("desert")),
-            new BountyDef("biome_burnt", 2, 1, "Betritt den verbrannten Wald", BountyKind.EnterBiome, N("burnt_forest")),
-            new BountyDef("biome_snow", 2, 1, "Betritt den Schnee", BountyKind.EnterBiome, N("snow")),
-            new BountyDef("biome_wasteland", 3, 1, "Betritt das Oedland", BountyKind.EnterBiome, N("wasteland")),
+            // ===================== Explore (biomes) =====================
+            new BountyDef("biome_desert", 1, 1, "Enter the desert", BountyKind.EnterBiome, N("desert")),
+            new BountyDef("biome_burnt", 2, 1, "Enter the burnt forest", BountyKind.EnterBiome, N("burnt_forest")),
+            new BountyDef("biome_snow", 2, 1, "Enter the snow", BountyKind.EnterBiome, N("snow")),
+            new BountyDef("biome_wasteland", 3, 1, "Enter the wasteland", BountyKind.EnterBiome, N("wasteland")),
         };
 
         public static BountyDef ById(string id)

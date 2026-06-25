@@ -63,7 +63,7 @@ namespace SnapBounty
             if (cmd == "/bounty" || cmd == "/bounties")
             {
                 if (parts.Length > 1 && parts[1].ToLowerInvariant() == "help")
-                    ChatUtil.Send(ci, "Befehle: /bounty (Auftraege anzeigen), /skip <Nr> (Auftrag neu wuerfeln)");
+                    ChatUtil.Send(ci, "Commands: /bounty (show bounties), /skip <n> (reroll a bounty)");
                 else
                     BountyManager.SendList(ci);
                 return ModEvents.EModEventResult.StopHandlersAndVanilla;
@@ -74,7 +74,7 @@ namespace SnapBounty
                 int idx = 1;
                 if (parts.Length > 1 && !int.TryParse(parts[1], out idx))
                 {
-                    ChatUtil.Send(ci, "Nutzung: /skip <Nr>  (z.B. /skip 2)");
+                    ChatUtil.Send(ci, "Usage: /skip <n>  (e.g. /skip 2)");
                     return ModEvents.EModEventResult.StopHandlersAndVanilla;
                 }
                 BountyManager.Skip(ci, idx);

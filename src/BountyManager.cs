@@ -55,7 +55,7 @@ namespace SnapBounty
             Persistence.Save();
             if (isLogin)
             {
-                ChatUtil.Send(ci, "Willkommen! /bounty zeigt deine Auftraege, /skip <Nr> wuerfelt neu.");
+                ChatUtil.Send(ci, "Welcome! /bounty shows your bounties, /skip <n> rerolls one.");
                 SendList(ci);
             }
         }
@@ -156,10 +156,10 @@ namespace SnapBounty
             {
                 if (!States.TryGetValue(Key(ci), out var st) || st.Active.Count == 0)
                 {
-                    ChatUtil.Send(ci, "Du hast aktuell keine Auftraege.");
+                    ChatUtil.Send(ci, "You have no active bounties.");
                     return;
                 }
-                var sb = new StringBuilder("Deine Auftraege:");
+                var sb = new StringBuilder("Your bounties:");
                 int i = 1;
                 foreach (var ab in st.Active)
                 {
@@ -167,7 +167,7 @@ namespace SnapBounty
                     if (def == null) continue;
                     sb.Append("\n  ").Append(i).Append(") ").Append(def.Title)
                       .Append("  [").Append(ab.Progress).Append('/').Append(def.TargetCount)
-                      .Append("]  (Tier ").Append(def.Tier).Append(')');
+                      .Append("]  (tier ").Append(def.Tier).Append(')');
                     i++;
                 }
                 ChatUtil.Send(ci, sb.ToString());
@@ -183,12 +183,12 @@ namespace SnapBounty
             {
                 if (!States.TryGetValue(key, out var st) || st.Active.Count == 0)
                 {
-                    ChatUtil.Send(ci, "Du hast keine Auftraege zum Skippen.");
+                    ChatUtil.Send(ci, "You have no bounties to skip.");
                     return;
                 }
                 if (index1Based < 1 || index1Based > st.Active.Count)
                 {
-                    ChatUtil.Send(ci, "Ungueltige Nummer. Nutze /bounty (1-" + st.Active.Count + ").");
+                    ChatUtil.Send(ci, "Invalid number. Use /bounty (1-" + st.Active.Count + ").");
                     return;
                 }
                 // Cooldown pruefen (0 = deaktiviert)
@@ -198,19 +198,19 @@ namespace SnapBounty
                     double remaining = cd - (DateTime.UtcNow - last).TotalSeconds;
                     if (remaining > 0)
                     {
-                        ChatUtil.Send(ci, "Skip-Cooldown: noch " + (int)Math.Ceiling(remaining) + "s.");
+                        ChatUtil.Send(ci, "Skip on cooldown: " + (int)Math.Ceiling(remaining) + "s remaining.");
                         return;
                     }
                 }
                 var current = new HashSet<string>(st.Active.Select(a => a.DefId));
                 var replacement = PickRandom(current);
-                if (replacement == null) { ChatUtil.Send(ci, "Kein anderer Auftrag verfuegbar."); return; }
+                if (replacement == null) { ChatUtil.Send(ci, "No other bounty available."); return; }
                 st.Active[index1Based - 1] = new ActiveBounty { DefId = replacement.Id, Progress = 0 };
                 newDef = replacement;
                 LastSkip[key] = DateTime.UtcNow;
                 Persistence.Save();
             }
-            ChatUtil.Send(ci, "Auftrag neu gewuerfelt: " + newDef.Title + " (Tier " + newDef.Tier + ")");
+            ChatUtil.Send(ci, "Rerolled: " + newDef.Title + " (tier " + newDef.Tier + ")");
             SendList(ci);
         }
 
@@ -242,7 +242,7 @@ namespace SnapBounty
             }
             foreach (var def in completed)
             {
-                ChatUtil.Send(ci, "Auftrag erfuellt: " + def.Title + " -> Loot-Bag (Tier " + def.Tier + ") wird gedroppt!");
+                ChatUtil.Send(ci, "Bounty complete: " + def.Title + " -> loot bag (tier " + def.Tier + ") incoming!");
                 GrantReward(ci, def);
             }
         }
